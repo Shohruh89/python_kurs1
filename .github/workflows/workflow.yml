@@ -32,26 +32,26 @@ jobs:
       with:
         node-version: '22.17.0'
     - name: Install Python and JS dependencies
-      run: ./scripts/install_deps.sh
+      run: ./scripts/ci_run.sh ./scripts/install_deps.sh
     - name: Test the English course
       env:
         FUTURECODER_LANGUAGE: en
       run: |
-        poetry run python -m translations.generate_po_file
-        poetry run python -m scripts.generate_static_files
-        poetry run pytest tests/test_steps.py tests/test_linting.py
+        ./scripts/ci_run.sh poetry run python -m translations.generate_po_file
+        ./scripts/ci_run.sh poetry run python -m scripts.generate_static_files
+        ./scripts/ci_run.sh poetry run pytest tests/test_steps.py tests/test_linting.py
     - name: Test every step of the Uzbek course
       env:
         FUTURECODER_LANGUAGE: uz
         # The Uzbek transcript isn't stored in the repo; every step is still checked to pass.
         FIX_TESTS: 1
       run: |
-        poetry run python -m scripts.generate_static_files
-        poetry run pytest tests/test_steps.py
+        ./scripts/ci_run.sh poetry run python -m scripts.generate_static_files
+        ./scripts/ci_run.sh poetry run pytest tests/test_steps.py
     - name: Build the Uzbek site
       env:
         FUTURECODER_LANGUAGE: uz
-      run: ./scripts/build.sh
+      run: ./scripts/ci_run.sh ./scripts/build.sh
     - name: Publish the built site to the deploy branch
       run: |
         cp deploy/vercel.json dist/
