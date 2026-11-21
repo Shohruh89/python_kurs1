@@ -1,0 +1,100 @@
+// Private login page (see src/auth). Works in light and dark mode and on any screen size.
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #eef3fb 0%, #dde7f7 100%);
+}
+
+.login-theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  color: #1f2933;
+  border-radius: 14px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 12px 40px rgba(31, 51, 87, 0.15);
+
+  h1 {
+    font-size: 1.6rem;
+    margin: 0 0 6px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 14px 0 6px;
+  }
+
+  .form-control {
+    height: 44px;
+    font-size: 1rem;
+  }
+}
+
+.login-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.login-description {
+  text-align: center;
+  color: #5b6876;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.login-error {
+  margin: 14px 0 0;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.login-submit {
+  margin-top: 20px;
+  height: 44px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+html[data-theme="dark"] {
+  .login-page {
+    background: linear-gradient(135deg, #0f141a 0%, #17202b 100%);
+  }
+
+  .login-card {
+    background: #161c24;
+    color: #e3e8ef;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .login-description {
+    color: #9aa5b1;
+  }
+}
+
+@media (max-width: 420px) {
+  .login-card {
+    padding: 26px 18px 22px;
+    border-radius: 12px;
+  }
+}

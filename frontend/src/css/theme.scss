@@ -1,0 +1,261 @@
+// Light/dark theme.
+// Light mode keeps the original look, with a few small polish touches.
+// Dark mode overrides colors only (no layout changes), under html[data-theme="dark"].
+// The editor (Ace "monokai"), the shell and code blocks are already dark in both modes.
+
+$dark-bg: #0f141a;
+$dark-surface: #161c24;
+$dark-surface-2: #1e2630;
+$dark-border: #2e3742;
+$dark-text: #e3e8ef;
+$dark-muted: #9aa5b1;
+$dark-link: #6cb6ff;
+
+// ---------- Small polish for both themes ----------
+
+.book-container .navbar {
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.theme-toggle-button {
+  min-width: 34px;
+}
+
+.assistant .card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.my-popup-content {
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+// ---------- Dark mode ----------
+
+@keyframes next-step-flash-dark {
+  0% {
+    background-color: #3b3a1c;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  body {
+    background-color: $dark-bg;
+    color: $dark-text;
+  }
+
+  ::selection {
+    background: #2f5d8a;
+    color: #ffffff;
+  }
+
+  // Bootstrap pieces
+
+  .bg-light,
+  .navbar.bg-light {
+    background-color: $dark-surface !important;
+  }
+
+  .book-container .navbar {
+    border-bottom-color: $dark-border;
+  }
+
+  .navbar-light .navbar-nav .nav-link,
+  .navbar-light .nav-link,
+  .navbar-light .navbar-text,
+  .nav-link {
+    color: $dark-text;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  .btn-outline-secondary {
+    color: $dark-text;
+    border-color: #59636e;
+
+    &:hover {
+      background-color: $dark-surface-2;
+      color: #ffffff;
+    }
+  }
+
+  .btn-link {
+    color: $dark-link;
+  }
+
+  .btn-default {
+    background-color: $dark-surface-2;
+    border-color: $dark-border;
+    color: $dark-text;
+  }
+
+  .card {
+    background-color: $dark-surface;
+    border-color: $dark-border;
+    color: $dark-text;
+  }
+
+  .card-header {
+    border-bottom-color: $dark-border;
+  }
+
+  .assistant .card__trigger {
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.04));
+
+    :hover {
+      background: linear-gradient(rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.08));
+    }
+  }
+
+  .alert-success {
+    background-color: #12301f;
+    border-color: #1f5133;
+    color: #b6f0c8;
+  }
+
+  .alert-warning {
+    background-color: #332a10;
+    border-color: #5c4a14;
+    color: #f5dd9a;
+  }
+
+  .alert-danger {
+    background-color: #3a1517;
+    border-color: #6b2226;
+    color: #ffc2c5;
+  }
+
+  .form-control {
+    background-color: $dark-bg;
+    border-color: $dark-border;
+    color: $dark-text;
+
+    &:focus {
+      background-color: $dark-bg;
+      color: $dark-text;
+      border-color: $dark-link;
+      box-shadow: 0 0 0 0.2rem rgba(108, 182, 255, 0.25);
+    }
+
+    &::placeholder {
+      color: $dark-muted;
+    }
+  }
+
+  hr {
+    border-top-color: $dark-border;
+  }
+
+  // Popups / modals
+
+  .my-popup-content,
+  .menu-popup,
+  .settings-modal,
+  .special-message-modal {
+    background: $dark-surface;
+    border-color: $dark-border;
+    color: $dark-text;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .special-message-modal {
+    border-color: #3a4552;
+  }
+
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  // Course text (GitHub markdown styles)
+
+  .markdown-body {
+    color: $dark-text;
+
+    a {
+      color: $dark-link;
+    }
+
+    h1, h2 {
+      border-bottom-color: $dark-border;
+    }
+
+    h6, blockquote {
+      color: $dark-muted;
+    }
+
+    blockquote {
+      border-left-color: #3d4650;
+    }
+
+    hr {
+      background-color: $dark-border;
+    }
+
+    code {
+      background-color: rgba(110, 118, 129, 0.3);
+      color: $dark-text;
+    }
+
+    pre code {
+      background-color: transparent;
+      color: #f8f8f2;
+    }
+
+    table td,
+    table th {
+      border-color: $dark-border;
+    }
+
+    table tr {
+      background-color: $dark-surface;
+      border-top-color: $dark-border;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: $dark-surface-2;
+    }
+
+    img {
+      background-color: transparent;
+    }
+
+    kbd {
+      background-color: $dark-surface-2;
+      border-color: $dark-border;
+      color: $dark-text;
+    }
+  }
+
+  // Output prediction (multiple choice) - already dark-ish, just match the page
+  .output-prediction .submit-prediction {
+    background: $dark-surface;
+    border-color: $dark-border;
+  }
+
+  // Step reveal highlight
+  .book-text [id^="step-text-"] {
+    animation-name: next-step-transition, next-step-flash-dark !important;
+  }
+
+  // Hidden parts of the gradual solution must stay unreadable
+  .solution-token-hidden,
+  .solution-token-hidden::selection {
+    background: #3a3f46;
+    color: #3a3f46;
+  }
+
+  // Toggle switch track
+  .react-toggle--checked .react-toggle-track {
+    background-color: #2f81f7;
+  }
+}

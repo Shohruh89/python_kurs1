@@ -1,0 +1,178 @@
+// Responsive layout.
+// Wide screens (computers, landscape tablets) keep the original side-by-side layout:
+// course text on the left, editor + shell on the right.
+// Narrow screens (phones, portrait tablets) stack everything vertically:
+// navbar, course text, run buttons, then editor and shell.
+
+$narrow: 900px;
+
+// Medium screens: slightly tighter side-by-side layout
+@media (min-width: #{$narrow + 1}) and (max-width: 1200px) {
+  .book-container .navbar {
+    font-size: 0.95rem;
+
+    > * {
+      padding-right: 0.6em;
+    }
+  }
+
+  .editor-buttons .btn {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: $narrow) {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .book-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 64px 12px 0 12px; // top: room for the fixed navbar
+
+    .navbar {
+      left: 0;
+      width: 100%;
+      padding: 0 56px 0 12px; // room for the full-screen button on the right
+      height: 52px;
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      > * {
+        padding-right: 0.6em;
+      }
+    }
+
+    .book-text {
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+  }
+
+  .markdown-body {
+    font-size: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    pre {
+      font-size: 13px;
+    }
+  }
+
+  // Run / snoop / Python Tutor / birdseye buttons: in the page flow, wrapping onto several lines
+  .editor-buttons {
+    position: static;
+    left: auto;
+    top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 8px 0;
+
+    &.invisible {
+      display: none;
+    }
+
+    .btn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  // Editor + shell: in the page flow below the text
+  .ide {
+    position: relative;
+    left: auto !important;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    height: 78vh;
+    min-height: 420px;
+    margin-bottom: 80px; // keep clear of the hint button
+
+    &.ide-full {
+      // Full-screen editor mode: editor on top, shell below
+      height: calc(100vh - 130px);
+      min-height: 360px;
+      margin-bottom: 12px;
+
+      .editor {
+        width: 100%;
+        height: 50%;
+      }
+
+      .terminal {
+        width: 100%;
+        height: 49%;
+        right: auto;
+      }
+    }
+  }
+
+  .full-ide-button {
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+  }
+
+  // Output prediction (multiple choice) submit bar
+  .output-prediction .submit-prediction {
+    width: calc(100% - 24px);
+    left: 12px;
+  }
+
+  .output-prediction .prediction-choice .prediction-label {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  // Menus and dialogs must fit on the screen
+  .menu-popup {
+    left: 8px;
+    right: 8px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+
+  .popup-content {
+    max-width: 96vw;
+  }
+
+  [role=dialog].popup-content,
+  .settings-modal,
+  .special-message-modal {
+    width: auto !important;
+    max-width: 94vw;
+  }
+
+  .special-message-modal {
+    border-width: 0.5em;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .hint-icon {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  // Tables in tracebacks etc. scroll instead of overflowing the page
+  .tracebacks-container .traceback .traceback-frame {
+    overflow-x: auto;
+  }
+}
+
+// Very small phones
+@media (max-width: 380px) {
+  .book-container .navbar {
+    font-size: 0.85rem;
+  }
+
+  .editor-buttons .btn {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.45rem;
+  }
+}
