@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/course/static/css/main.db7cf49d.css",
+    "main.js": "/course/static/js/main.b41b149e.js",
+    "pyodide/pyodide.asm.wasm": "/course/pyodide/pyodide.asm.wasm",
+    "static/media/python_core.tar.load_by_url": "/course/static/media/python_core.tar.45836fb9c149930d663e.load_by_url",
+    "pyodide/python_stdlib.zip": "/course/pyodide/python_stdlib.zip",
+    "pyodide/pyodide.asm.js": "/course/pyodide/pyodide.asm.js",
+    "static/media/pages.json.load_by_url": "/course/static/media/pages.json.0f9a125a71feb1af2afd.load_by_url",
+    "pyodide/pyodide-lock.json": "/course/pyodide/pyodide-lock.json",
+    "static/js/Worker.3155f15a.worker.js": "/course/static/js/Worker.3155f15a.worker.js",
+    "service-worker.js": "/course/service-worker.js",
+    "static/media/language.png": "/course/static/media/language.01e9858166e0111e3375.png",
+    "pyodide/package.json": "/course/pyodide/package.json",
+    "index.html": "/course/index.html",
+    "main.db7cf49d.css.map": "/course/static/css/main.db7cf49d.css.map",
+    "main.b41b149e.js.map": "/course/static/js/main.b41b149e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db7cf49d.css",
+    "static/js/main.b41b149e.js"
+  ]
+}
