@@ -39,7 +39,7 @@ jobs:
       run: |
         ./scripts/ci_run.sh poetry run python -m translations.generate_po_file
         ./scripts/ci_run.sh poetry run python -m scripts.generate_static_files
-        ./scripts/ci_run.sh poetry run pytest tests/test_steps.py tests/test_linting.py
+        ./scripts/ci_run.sh poetry run pytest tests/test_linting.py tests/test_steps.py
     - name: Test every step of the Uzbek course
       env:
         FUTURECODER_LANGUAGE: uz
